@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🦭 Feliz Cumpleaños, Nashla!</title>
+  <meta name="description" content="Una experiencia de cumpleaños muy especial para la foca más especial del mundo." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="font-nunito overflow-x-hidden">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PASO 1: EL PORTAL
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="step-1" class="step active ocean-bg flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
+    <!-- Bubbles -->
+    <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Waves bottom -->
+    <div class="wave-container" aria-hidden="true">
+      <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="rgba(255,255,255,0.15)" d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,80C672,85,768,75,864,64C960,53,1056,43,1152,48C1248,53,1344,75,1392,85.3L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"/>
+      </svg>
+    </div>
+
+    <div class="text-center px-6 z-10">
+      <div class="seal-emoji-big mb-6" aria-hidden="true">🌊</div>
+      <h1 class="font-pacifico text-4xl md:text-6xl text-white drop-shadow-lg mb-4 leading-tight">
+        Bienvenida al<br/>
+        <span class="text-cyan-200">Océano Foca</span>
+      </h1>
+      <p class="text-blue-100 text-lg md:text-xl mb-10 opacity-90">
+        Algo muy especial te espera en las profundidades...
+      </p>
+      <button id="btn-portal" onclick="goToStep(2)"
+        class="portal-btn bg-white text-blue-700 font-black text-lg md:text-xl px-10 py-5 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border-4 border-blue-200 hover:border-cyan-400">
+        🦭 ¿Es hoy el día de la foca más especial del mundo?
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PASO 2: LA PREGUNTA TRAMPA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="step-2" class="step ocean-bg-deep flex flex-col items-center justify-center min-h-screen relative overflow-hidden px-4">
+    <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="text-center z-10 max-w-2xl mx-auto">
+      <div class="text-7xl mb-6 bounce-anim" aria-hidden="true">🦭</div>
+      <h2 class="font-pacifico text-4xl md:text-5xl text-white drop-shadow-lg mb-4">
+        ¿Eres <span class="text-yellow-300">TÚ</span> esa foca<br/>cumpleañera?
+      </h2>
+      <p class="text-blue-100 text-lg mb-12 opacity-80">Piénsalo bien antes de responder... 👀</p>
+
+      <div class="flex gap-6 justify-center items-center flex-wrap">
+        <!-- SÍ -->
+        <button id="btn-si" onclick="goToStep(3)"
+          class="btn-yes bg-gradient-to-r from-green-400 to-emerald-500 text-white font-black text-2xl px-14 py-6 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 cursor-pointer">
+          ¡SÍ! 🎉
+        </button>
+
+        <!-- NO (escapatorio) -->
+        <div class="no-wrapper relative">
+          <button id="btn-no"
+            class="btn-no bg-gradient-to-r from-red-400 to-rose-500 text-white font-black text-2xl px-14 py-6 rounded-full shadow-2xl cursor-pointer transition-all duration-300"
+            onmouseover="escapeButton(this)" ontouchstart="escapeButton(this)">
+            NO 🙅
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tooltip flotante foca graciosa -->
+    <div id="foca-tooltip" class="foca-tooltip fixed z-50 flex flex-col items-center" style="display:none">
+      <div class="bg-white rounded-2xl shadow-2xl p-4 max-w-xs text-center border-4 border-cyan-400">
+        <img src="img/foca-seria.jpg" alt="Nashla foca seria" class="w-40 h-40 object-cover rounded-xl mx-auto mb-3 shadow-lg" />
+        <p class="font-black text-blue-700 text-lg leading-tight">¿Cómo que no?<br/>¡Tu cara dice que sí! 🦭</p>
+      </div>
+      <div class="tooltip-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PASO 3: EL CAMINO A LA TORTA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="step-3" class="step ocean-gradient min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
+    <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+
+    <h2 class="font-pacifico text-3xl md:text-5xl text-white text-center drop-shadow-lg mb-16 z-10">
+      El camino a la 🎂 torta
+    </h2>
+
+    <div class="cards-container z-10 w-full max-w-3xl space-y-8" id="cards-container">
+
+      <!-- Tarjeta 1 -->
+      <div class="journey-card opacity-0 translate-y-10 transition-all duration-700 bg-white/20 backdrop-blur-md rounded-3xl p-8 border border-white/30 shadow-2xl text-white text-center">
+        <div class="text-5xl mb-4" aria-hidden="true">🌟</div>
+        <p class="text-2xl md:text-3xl font-black mb-2">Este año has sido</p>
+        <p class="text-3xl md:text-4xl font-pacifico text-yellow-300">una foca increíble.</p>
+        <p class="mt-4 text-blue-100 text-lg">Cada aleta, cada chapuzón, cada momento ha valido la pena.</p>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="journey-card opacity-0 translate-y-10 transition-all duration-700 delay-200 bg-white/20 backdrop-blur-md rounded-3xl p-8 border border-white/30 shadow-2xl text-white text-center">
+        <div class="text-5xl mb-4" aria-hidden="true">🌊</div>
+        <p class="text-2xl md:text-3xl font-black mb-2">Has nadado entre retos</p>
+        <p class="text-3xl md:text-4xl font-pacifico text-cyan-200">y has salido a flote.</p>
+        <p class="mt-4 text-blue-100 text-lg">Porque las focas especiales no se hunden... ¡nadan más rápido!</p>
+      </div>
+
+      <!-- Tarjeta 3 con foto -->
+      <div class="journey-card opacity-0 translate-y-10 transition-all duration-700 delay-500 bg-white/20 backdrop-blur-md rounded-3xl p-8 border border-white/30 shadow-2xl text-white text-center">
+        <div class="text-5xl mb-4" aria-hidden="true">🍕</div>
+        <p class="text-2xl md:text-3xl font-black mb-2">¡Y hoy es momento de</p>
+        <p class="text-3xl md:text-4xl font-pacifico text-orange-300">¡celebrar con mucha comida!</p>
+        <img src="img/foca-pez.jpg" alt="Nashla foca comiendo" class="w-52 h-52 object-cover rounded-2xl mx-auto mt-6 shadow-xl border-4 border-white/50" />
+        <p class="mt-4 text-blue-100 text-lg italic">La foca no pierde el tiempo con peces pequeños... 😂🐟</p>
+      </div>
+
+    </div>
+
+    <button onclick="goToStep(4)"
+      class="mt-14 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-black text-xl px-12 py-5 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer">
+      ¡Quiero ver mi torta! 🎂
+    </button>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PASO 4: EL CLÍMAX — EL BIZCOCHO
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="step-4" class="step ocean-dark min-h-screen flex flex-col items-center justify-center px-4 py-16 relative overflow-hidden">
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+    <div class="z-10 text-center max-w-2xl mx-auto">
+
+      <h2 id="cake-title" class="font-pacifico text-4xl md:text-5xl text-white drop-shadow-lg mb-4 transition-all duration-500">
+        🎂 Tu torta te espera...
+      </h2>
+      <p id="cake-subtitle" class="text-blue-200 text-lg mb-12">Haz clic en el bizcocho para pedir tu deseo 🌟</p>
+
+      <!-- EL BIZCOCHO -->
+      <div id="cake-wrapper" class="relative inline-block cursor-pointer" onclick="explodeCake()">
+        <div id="cake-emoji" class="cake-idle text-[10rem] md:text-[14rem] select-none transition-all duration-500 leading-none drop-shadow-2xl">
+          🎂
+        </div>
+        <div id="cake-glow" class="absolute inset-0 rounded-full opacity-0 transition-all duration-500 pointer-events-none"
+          style="background: radial-gradient(circle, rgba(255,200,50,0.6) 0%, transparent 70%); filter: blur(20px);"></div>
+      </div>
+
+      <!-- REVELACIÓN (oculta inicialmente) -->
+      <div id="big-reveal" class="mt-8 flex-col items-center">
+        <div class="reveal-card bg-white/15 backdrop-blur-lg rounded-3xl p-8 border border-white/30 shadow-2xl text-white text-center max-w-lg mx-auto">
+          <img src="img/foca-cake.jpg" alt="Nashla foca con torta de cumpleaños" class="w-72 h-72 object-cover rounded-2xl mx-auto mb-6 shadow-2xl border-4 border-yellow-300" />
+          <h3 class="font-pacifico text-3xl md:text-4xl text-yellow-300 mb-4 leading-tight">
+            ¡Feliz Cumpleaños,<br/>foca favorita! 🦭🎉
+          </h3>
+          <p class="text-blue-100 text-lg md:text-xl leading-relaxed">
+            Que hoy comas tanto pastel como una foca en el ártico.<br/>
+            <span class="text-yellow-200 font-bold">¡Sin límites! 🎂🐟❄️</span>
+          </p>
+        </div>
+
+        <button onclick="goToStep(5)"
+          class="mt-10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-black text-xl px-12 py-5 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer animate-pulse">
+          🎁 Abrir regalo final
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PASO 5: EL REGALITO EXTRA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="step-5" class="step gift-bg min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
+    <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="z-10 text-center max-w-xl mx-auto w-full">
+      <div class="text-7xl mb-6 bounce-anim" aria-hidden="true">🎁</div>
+      <h2 class="font-pacifico text-4xl md:text-5xl text-white drop-shadow-lg mb-4">
+        Tu regalito extra
+      </h2>
+      <p class="text-purple-200 text-lg mb-12">Porque una foca especial merece algo especial 🦭💕</p>
+
+      <!-- Solo la tarjeta del mensaje secreto, centrada y grande -->
+      <div onclick="showMessage(); playSoundLetter();"
+        class="gift-card group bg-white/15 backdrop-blur-md rounded-3xl p-10 border border-white/30 shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col items-center gap-5 text-white mb-10 mx-auto">
+        <div class="text-7xl group-hover:scale-125 transition-transform duration-300 gift-letter-float" aria-hidden="true">💌</div>
+        <h3 class="font-black text-2xl">Mensaje secreto</h3>
+        <p class="text-purple-200 text-base text-center leading-relaxed">Algo muy especial escrito<br/>solo para ti, foca favorita ✨</p>
+        <span class="mt-2 bg-pink-500 text-white font-bold px-8 py-3 rounded-full text-lg shadow-lg">Leer carta 💕</span>
+      </div>
+
+      <!-- Cierre -->
+      <div class="final-message bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl text-white text-center">
+        <div class="text-4xl mb-4" aria-hidden="true">🦭💖</div>
+        <p class="font-pacifico text-2xl text-yellow-300 mb-3">Nashla,</p>
+        <p class="text-lg text-purple-100 leading-relaxed">
+          Que este año que empieza esté lleno de risas, peces deliciosos y mucha agua fresca.
+          Gracias por ser la foca más especial de todo el océano.
+          <span class="text-yellow-300 font-bold">¡Te quiero muchísimo! 🎉🦭</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: Mensaje emotivo -->
+  <div id="message-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+    <div class="bg-gradient-to-br from-pink-50 to-purple-100 rounded-3xl p-10 max-w-lg w-full text-center shadow-2xl border-4 border-pink-300 relative animate-pop overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal('message-modal')" class="absolute top-4 right-4 text-3xl cursor-pointer text-gray-500 hover:text-red-500">✕</button>
+      <div class="text-5xl mb-4">💌</div>
+      <h3 class="font-pacifico text-3xl text-pink-700 mb-6">Para Nashla</h3>
+      <div class="text-left space-y-4 text-gray-700 text-base leading-relaxed">
+        <p>Oye tú, sí, tú la foca cumpleañera que está leyendo esto...</p>
+        <p>Quiero que sepas que eres de las personas más genuinas, divertidas y especiales que conozco. Tienes esa magia rara de hacer que todo valga más con solo estar presente.</p>
+        <p>Este año no fue fácil para nadie, pero te vi nadar contra la corriente y salir siempre a flote. Eso no es poca cosa. Eso es ser una foca de nivel élite. 🦭⭐</p>
+        <p>Espero que este cumpleaños sea tan grande como tu corazón, y que el próximo año esté lleno de cosas buenas, risas, y sí, mucha comida también.</p>
+        <p class="font-bold text-pink-700 text-lg text-center pt-4">¡Feliz cumpleaños, Nashla! Te quiero un montón. 🎉💕</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+/* ============================================================
+   BASE & FONTS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+
+.font-pacifico { font-family: 'Pacifico', cursive; }
+.font-nunito   { font-family: 'Nunito', sans-serif; }
+
+/* ============================================================
+   SECTIONS / STEPS
+   ============================================================ */
+.step {
+  display: none !important;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+.step.active {
+  display: flex !important;
+  flex-direction: column;
+}
+
+/* ============================================================
+   BACKGROUNDS
+   ============================================================ */
+.ocean-bg {
+  background: linear-gradient(160deg,
+    #0c1e4a 0%,
+    #0a3d7c 30%,
+    #1565c0 60%,
+    #0288d1 100%
+  );
+}
+
+.ocean-bg-deep {
+  background: linear-gradient(160deg,
+    #0d2137 0%,
+    #0a4a6e 40%,
+    #0277bd 80%,
+    #01579b 100%
+  );
+}
+
+.ocean-gradient {
+  background: linear-gradient(175deg,
+    #01579b 0%,
+    #0288d1 40%,
+    #0097a7 80%,
+    #004d40 100%
+  );
+}
+
+.ocean-dark {
+  background: linear-gradient(160deg,
+    #0d1b2a 0%,
+    #1a237e 35%,
+    #283593 65%,
+    #1565c0 100%
+  );
+}
+
+.gift-bg {
+  background: linear-gradient(160deg,
+    #1a0038 0%,
+    #3f0082 35%,
+    #6a0dad 65%,
+    #9c27b0 100%
+  );
+}
+
+/* ============================================================
+   BUBBLES
+   ============================================================ */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -150px;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  animation: bubbleRise linear infinite;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.bubbles span:nth-child(1)  { left: 8%;  width: 18px; height: 18px; animation-duration: 7s;  animation-delay: 0s;  }
+.bubbles span:nth-child(2)  { left: 18%; width: 28px; height: 28px; animation-duration: 9s;  animation-delay: 1s;  }
+.bubbles span:nth-child(3)  { left: 30%; width: 12px; height: 12px; animation-duration: 6s;  animation-delay: 2s;  }
+.bubbles span:nth-child(4)  { left: 45%; width: 22px; height: 22px; animation-duration: 8s;  animation-delay: 0.5s;}
+.bubbles span:nth-child(5)  { left: 58%; width: 16px; height: 16px; animation-duration: 7s;  animation-delay: 3s;  }
+.bubbles span:nth-child(6)  { left: 68%; width: 32px; height: 32px; animation-duration: 10s; animation-delay: 1.5s;}
+.bubbles span:nth-child(7)  { left: 75%; width: 14px; height: 14px; animation-duration: 6s;  animation-delay: 2.5s;}
+.bubbles span:nth-child(8)  { left: 82%; width: 24px; height: 24px; animation-duration: 8s;  animation-delay: 0.8s;}
+.bubbles span:nth-child(9)  { left: 90%; width: 10px; height: 10px; animation-duration: 5s;  animation-delay: 4s;  }
+.bubbles span:nth-child(10) { left: 95%; width: 20px; height: 20px; animation-duration: 7.5s;animation-delay: 1.2s;}
+
+@keyframes bubbleRise {
+  0%   { bottom: -150px; opacity: 0; transform: translateX(0); }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.4; }
+  100% { bottom: 110%; opacity: 0; transform: translateX(30px); }
+}
+
+/* ============================================================
+   WAVE
+   ============================================================ */
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.wave {
+  width: 100%;
+  height: 120px;
+  animation: waveMove 6s ease-in-out infinite alternate;
+}
+@keyframes waveMove {
+  from { transform: translateX(-10px); }
+  to   { transform: translateX(10px); }
+}
+
+/* ============================================================
+   PORTAL BUTTON
+   ============================================================ */
+.portal-btn {
+  animation: portalPulse 2.5s ease-in-out infinite;
+  position: relative;
+}
+.portal-btn::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.15);
+  animation: portalRing 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes portalPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(255,255,255,0.4), 0 0 60px rgba(100,200,255,0.2); }
+  50%       { box-shadow: 0 0 60px rgba(255,255,255,0.7), 0 0 120px rgba(100,200,255,0.4); }
+}
+@keyframes portalRing {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50%       { transform: scale(1.08); opacity: 0; }
+}
+
+/* ============================================================
+   SEAL EMOJI BIG
+   ============================================================ */
+.seal-emoji-big {
+  font-size: 5rem;
+  animation: floatSeal 3s ease-in-out infinite;
+}
+@keyframes floatSeal {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-16px); }
+}
+
+/* ============================================================
+   BOUNCE ANIMATION
+   ============================================================ */
+.bounce-anim {
+  animation: bounceEmoji 1.2s ease-in-out infinite;
+}
+@keyframes bounceEmoji {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* ============================================================
+   NO BUTTON ESCAPE
+   ============================================================ */
+.no-wrapper {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-no {
+  position: absolute;
+  white-space: nowrap;
+  transition: left 0.15s ease, top 0.15s ease, transform 0.3s ease;
+}
+
+/* ============================================================
+   FOCA TOOLTIP
+   ============================================================ */
+.foca-tooltip {
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+  animation: tooltipPop 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes tooltipPop {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.tooltip-arrow {
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 14px solid #22d3ee;
+  margin-top: -2px;
+}
+
+/* ============================================================
+   JOURNEY CARDS
+   ============================================================ */
+.journey-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ============================================================
+   CAKE
+   ============================================================ */
+.cake-idle {
+  animation: cakeFloat 2.5s ease-in-out infinite;
+  cursor: pointer;
+  filter: drop-shadow(0 0 30px rgba(255,200,50,0.4));
+}
+@keyframes cakeFloat {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50%       { transform: scale(1.07) rotate(2deg); }
+}
+
+.cake-exploding {
+  animation: cakeExplode 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards !important;
+}
+@keyframes cakeExplode {
+  0%   { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,200,50,0)); }
+  40%  { transform: scale(1.5); filter: drop-shadow(0 0 60px rgba(255,200,50,1)); }
+  70%  { transform: scale(0.8); }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+#cake-wrapper:hover #cake-glow {
+  opacity: 1 !important;
+}
+
+/* ============================================================
+   REVEAL CARD
+   ============================================================ */
+.reveal-card {
+  animation: revealSlide 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes revealSlide {
+  from { transform: scale(0.7) translateY(60px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* ============================================================
+   GIFT CARDS
+   ============================================================ */
+.gift-card {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+}
+.gift-card:hover {
+  box-shadow: 0 0 40px rgba(255,255,255,0.2), 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* Floating animation for the letter emoji in Step 5 */
+.gift-letter-float {
+  animation: letterFloat 2s ease-in-out infinite;
+}
+@keyframes letterFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%       { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+#message-modal {
+  display: none;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.animate-pop {
+  animation: modalPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+/* ============================================================
+   TRANSITIONS BETWEEN STEPS
+   ============================================================ */
+.step.zoom-out {
+  animation: zoomOut 0.5s cubic-bezier(0.55,0,1,0.45) forwards;
+}
+.step.zoom-in {
+  animation: zoomIn 0.5s cubic-bezier(0,0.55,0.45,1) forwards;
+}
+
+@keyframes zoomOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(1.15); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ============================================================
+   UTILITY HELPERS (override Tailwind when needed)
+   ============================================================ */
+.hidden-el { display: none !important; }
+.show-flex  { display: flex !important; }
+
+/* big-reveal starts hidden, shown via JS .show-flex class */
+#big-reveal {
+  display: none !important;
+}
+#big-reveal.show-flex {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE  (max 640px)
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Step 1 — Portal */
+  .seal-emoji-big { font-size: 3rem; }
+
+  #btn-portal {
+    font-size: 0.9rem !important;
+    padding: 0.875rem 1.25rem !important;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 90vw;
+  }
+
+  /* Step 2 — Pregunta trampa */
+  .no-wrapper { width: 150px; height: 64px; }
+  #step-2 h2 { font-size: 1.8rem !important; }
+
+  /* Step 3 — Journey cards */
+  .journey-card { padding: 1.5rem !important; }
+  .journey-card img { width: 9rem !important; height: 9rem !important; }
+  #step-3 h2 { font-size: 1.8rem !important; }
+
+  /* Step 4 — Cake smaller on mobile */
+  #cake-emoji { font-size: 7rem !important; }
+  #cake-title { font-size: 1.75rem !important; }
+
+  /* Reveal photo */
+  #big-reveal img { width: 13rem !important; height: 13rem !important; }
+
+  /* Step 5 — Regalito */
+  #step-5 .gift-card { padding: 2rem 1.25rem !important; }
+  #step-5 h2 { font-size: 2rem !important; }
+
+  /* Final message card */
+  .final-message { padding: 1.5rem !important; }
+  .final-message p { font-size: 0.95rem !important; }
+
+  /* Modal full width on mobile */
+  #message-modal > div {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 1.25rem !important;
+    max-height: 95vh;
+  }
+  #message-modal h3 { font-size: 1.6rem !important; }
+
+  /* General pacifico font scaling */
+  h1.font-pacifico, .font-pacifico.text-4xl  { font-size: 2rem   !important; }
+  h1.font-pacifico, .font-pacifico.text-5xl  { font-size: 2.25rem!important; }
+  h1.font-pacifico, .font-pacifico.text-6xl  { font-size: 2.5rem !important; }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET  (641px – 1023px)
+   ============================================================ */
+@media (min-width: 641px) and (max-width: 1023px) {
+
+  /* Step 1 — Portal button */
+  #btn-portal { font-size: 1rem !important; padding: 1rem 2rem !important; }
+
+  /* Step 3 — Cards: limit width */
+  .cards-container { max-width: 600px !important; }
+  .journey-card { padding: 1.75rem !important; }
+
+  /* Step 4 — Cake slightly smaller on tablet */
+  #cake-emoji { font-size: 10rem !important; }
+
+  /* Step 5 — single card more compact */
+  #step-5 .gift-card { max-width: 26rem !important; }
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a1628; }
+::-webkit-scrollbar-thumb { background: #0288d1; border-radius: 99px; }
